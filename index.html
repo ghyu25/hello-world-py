@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World - Python</title>
+</head>
+<body>
+    <h1>Hello from the frontend!</h1>
+    <input id="name" placeholder="Enter your name">
+    <button onclick="sendRequest()">Send</button>
+    <p id="response"></p>
+
+    <script>
+        async function sendRequest() {
+            const name = document.getElementById("name").value;
+            const res = await fetch(`/api/hello?name=${encodeURIComponent(name)}`);
+            const data = await res.json();
+            document.getElementById("response").innerText = data.message;
+        }
+    </script>
+</body>
+</html>
